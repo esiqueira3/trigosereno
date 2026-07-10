@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Padaria Trigo Sereno — Padaria, Confeitaria e Cafeteria em Ivaiporã · PR</title>
+<meta name="description" content="Pães de fermentação natural, confeitaria artesanal e café especial no coração de Ivaiporã. O pão que descansa a noite inteira para acordar perfeito. Av. Paraná, 1120 — Centro.">
+<meta property="og:title" content="Padaria Trigo Sereno — feito no silêncio da madrugada">
+<meta property="og:description" content="Padaria, confeitaria e cafeteria artesanal em Ivaiporã · PR. Fornadas quentes todos os dias, desde as 6h.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.trigosereno.com.br">
+<meta property="og:image" content="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1200&q=80&fm=jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌾</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TRIGO SERENO · design system
+   ============================================================ */
+:root{
+  --ink:        #241809;
+  --ink-soft:   #4c3a24;
+  --espresso:   #1c1206;
+  --cream:      #f6efe1;
+  --paper:      #fbf7ed;
+  --sand:       #efe4cd;
+  --gold:       #b9812f;
+  --gold-soft:  #d9a75f;
+  --sage:       #6f7d5c;
+  --line:       rgba(36,24,9,.14);
+  --shadow-lg:  0 30px 60px -20px rgba(28,18,6,.35);
+  --shadow-sm:  0 12px 30px -12px rgba(28,18,6,.22);
+  --radius:     22px;
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans:  "Manrope", -apple-system, sans-serif;
+  --wrap:       1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+body{
+  font-family:var(--font-sans);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.7;
+  font-size:16.5px;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--gold-soft);color:var(--espresso)}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 6vw}
+@media(min-width:1300px){.wrap{padding:0 24px}}
+
+/* grain texture overlay */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* ============ typography helpers ============ */
+.kicker{
+  display:inline-flex;align-items:center;gap:.9rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gold);
+}
+.kicker::before{content:"";width:42px;height:1.5px;background:var(--gold);flex:none}
+.kicker.center::after{content:"";width:42px;height:1.5px;background:var(--gold);flex:none}
+h1,h2,h3{font-family:var(--font-serif);font-weight:400;line-height:1.12;letter-spacing:-.01em}
+h2{font-size:clamp(2.1rem,4.4vw,3.4rem);margin:1.1rem 0 1.4rem}
+h2 em,h1 em,.banner em{font-style:italic;color:var(--gold)}
+.lead{font-size:clamp(1.02rem,1.4vw,1.16rem);color:var(--ink-soft);max-width:56ch}
+
+/* ============ reveal on scroll ============ */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.22,.7,.3,1),transform .9s cubic-bezier(.22,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}.rv.d4{transition-delay:.48s}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  transition:background .45s ease,box-shadow .45s ease,padding .45s ease;
+  padding:22px 0;
+}
+header.solid{
+  background:rgba(251,247,237,.92);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--line),0 14px 40px -24px rgba(28,18,6,.3);
+  padding:12px 0;
+}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:2rem}
+.brand{display:flex;align-items:center;gap:.8rem}
+.brand svg{width:40px;height:40px;flex:none}
+.brand-name{font-family:var(--font-serif);font-size:1.42rem;letter-spacing:.01em;color:#fff;transition:color .45s;line-height:1.05}
+.brand-sub{font-size:.56rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-soft);transition:color .45s}
+header.solid .brand-name{color:var(--ink)}
+header.solid .brand-sub{color:var(--gold)}
+.nav-links{display:flex;gap:2.1rem;align-items:center}
+.nav-links a{
+  font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.85);transition:color .3s;position:relative;padding:4px 0;white-space:nowrap;
+}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1.5px;background:var(--gold-soft);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+header.solid .nav-links a{color:var(--ink-soft)}
+.nav-links a:hover{color:var(--gold)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-family:var(--font-sans);font-size:.82rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:.95rem 1.9rem;border-radius:100px;cursor:pointer;border:none;
+  transition:transform .3s,box-shadow .3s,background .3s,color .3s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:var(--gold);color:#fff;box-shadow:0 14px 30px -12px rgba(185,129,47,.6)}
+.btn-gold:hover{background:#a06f24;box-shadow:0 18px 36px -12px rgba(185,129,47,.7)}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.55)}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.btn-dark{background:var(--espresso);color:var(--cream)}
+.btn-dark:hover{background:#000}
+.nav .btn{padding:.72rem 1.5rem}
+
+.burger{display:none;background:none;border:none;cursor:pointer;z-index:1002;width:34px;height:26px;position:relative}
+.burger span{position:absolute;left:0;width:100%;height:2px;background:#fff;border-radius:2px;transition:all .35s}
+header.solid .burger span{background:var(--ink)}
+.burger span:nth-child(1){top:2px}.burger span:nth-child(2){top:12px}.burger span:nth-child(3){top:22px}
+body.menu-open .burger span{background:var(--cream)!important}
+body.menu-open .burger span:nth-child(1){top:12px;transform:rotate(45deg)}
+body.menu-open .burger span:nth-child(2){opacity:0}
+body.menu-open .burger span:nth-child(3){top:12px;transform:rotate(-45deg)}
+
+.mobile-menu{
+  position:fixed;inset:0;background:var(--espresso);z-index:1001;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:1.6rem;
+  opacity:0;visibility:hidden;transition:opacity .45s,visibility .45s;
+}
+body.menu-open .mobile-menu{opacity:1;visibility:visible}
+.mobile-menu a{font-family:var(--font-serif);font-size:2rem;color:var(--cream);transition:color .3s}
+.mobile-menu a:hover{color:var(--gold-soft)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  color:#fff;isolation:isolate;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background:url("https://images.unsplash.com/photo-1509440159596-0249088772ff?w=2000&q=82&fm=jpg&fit=crop") center/cover no-repeat;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    radial-gradient(ellipse at 25% 45%, rgba(28,18,6,.28) 0%, transparent 55%),
+    linear-gradient(100deg, rgba(20,12,3,.88) 0%, rgba(20,12,3,.62) 46%, rgba(20,12,3,.28) 100%),
+    linear-gradient(to top, rgba(20,12,3,.72), transparent 38%);
+}
+.hero-inner{padding-top:110px;padding-bottom:90px;max-width:760px}
+.hero .kicker{color:var(--gold-soft)}
+.hero .kicker::before{background:var(--gold-soft)}
+.hero h1{
+  font-size:clamp(2.7rem,6.4vw,5.1rem);
+  margin:1.4rem 0 1.6rem;font-weight:300;
+}
+.hero p{
+  font-size:clamp(1.05rem,1.5vw,1.24rem);color:rgba(255,255,255,.82);
+  max-width:52ch;font-weight:300;
+}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.6rem}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.7rem;margin-top:3rem;
+  font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+  color:rgba(255,255,255,.75);
+}
+.hero-badge .dot{width:9px;height:9px;border-radius:50%;background:var(--gold-soft);box-shadow:0 0 0 0 rgba(217,167,95,.7);animation:pulse 2.2s infinite}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(217,167,95,.55)}
+  70%{box-shadow:0 0 0 12px rgba(217,167,95,0)}
+  100%{box-shadow:0 0 0 0 rgba(217,167,95,0)}
+}
+.scroll-hint{
+  position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  color:rgba(255,255,255,.6);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;
+}
+.scroll-hint .line{width:1.5px;height:52px;background:linear-gradient(to bottom,rgba(255,255,255,.7),transparent);animation:drip 2s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ============================================================
+   TICKER
+   ============================================================ */
+.ticker{
+  background:var(--espresso);color:var(--cream);overflow:hidden;
+  padding:1.05rem 0;border-top:1px solid rgba(217,167,95,.25);border-bottom:1px solid rgba(217,167,95,.25);
+}
+.ticker-track{display:flex;gap:0;width:max-content;animation:marquee 36s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-track span{
+  display:inline-flex;align-items:center;gap:2.4rem;padding-right:2.4rem;
+  font-family:var(--font-serif);font-size:1rem;font-style:italic;letter-spacing:.06em;white-space:nowrap;
+}
+.ticker-track .sep{color:var(--gold-soft);font-style:normal}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ============================================================
+   SOBRE / MANIFESTO
+   ============================================================ */
+.sobre{padding:clamp(5rem,10vw,8.5rem) 0;position:relative}
+.sobre-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2.5rem,6vw,5.5rem);align-items:center}
+.collage{position:relative;min-height:540px}
+.collage .ph{
+  position:absolute;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);
+  background:var(--sand);
+}
+.collage .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
+.collage .ph:hover img{transform:scale(1.05)}
+.collage .p1{width:66%;height:74%;top:0;left:0;z-index:1}
+.collage .p2{width:52%;height:52%;bottom:0;right:0;z-index:2;border:8px solid var(--paper)}
+.collage .stamp{
+  position:absolute;z-index:3;top:8%;right:4%;width:128px;height:128px;
+  animation:spin 22s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sobre-txt p+p{margin-top:1.1rem}
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
+  margin-top:clamp(3.5rem,7vw,5.5rem);padding-top:3rem;border-top:1px solid var(--line);
+}
+.stat{text-align:left}
+.stat b{
+  font-family:var(--font-serif);font-weight:400;font-size:clamp(2.2rem,3.6vw,3.1rem);
+  color:var(--gold);display:block;line-height:1;
+}
+.stat b sup{font-size:.45em;top:-.7em}
+.stat span{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink-soft)}
+
+/* ============================================================
+   VITRINE (menu)
+   ============================================================ */
+.vitrine{background:var(--cream);padding:clamp(5rem,10vw,8.5rem) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.vitrine-head{text-align:center;max-width:640px;margin:0 auto}
+.vitrine-head .kicker{justify-content:center}
+.tabs{display:flex;justify-content:center;gap:.6rem;margin:2.8rem 0 3.2rem;flex-wrap:wrap}
+.tab{
+  font-family:var(--font-sans);font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:.8rem 1.7rem;border-radius:100px;border:1.5px solid var(--line);
+  background:transparent;color:var(--ink-soft);cursor:pointer;transition:all .3s;
+}
+.tab:hover{border-color:var(--gold);color:var(--gold)}
+.tab.on{background:var(--espresso);border-color:var(--espresso);color:var(--cream)}
+.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
+.panel{display:none}
+.panel.on{display:block;animation:fadeUp .6s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.card{
+  background:var(--paper);border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-sm);transition:transform .45s ease,box-shadow .45s ease;
+  display:flex;flex-direction:column;
+}
+.card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.card-img{position:relative;aspect-ratio:4/3.4;overflow:hidden}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s ease}
+.card:hover .card-img img{transform:scale(1.08)}
+.price{
+  position:absolute;top:14px;right:14px;
+  background:rgba(251,247,237,.94);backdrop-filter:blur(6px);
+  font-weight:800;font-size:.86rem;color:var(--ink);
+  padding:.42rem .85rem;border-radius:100px;box-shadow:0 6px 16px -6px rgba(28,18,6,.35);
+}
+.card-body{padding:1.3rem 1.4rem 1.5rem;flex:1}
+.card-body h3{font-size:1.28rem;margin-bottom:.35rem}
+.card-body p{font-size:.9rem;color:var(--ink-soft);line-height:1.55}
+.vitrine-note{text-align:center;margin-top:2.6rem;font-size:.92rem;color:var(--ink-soft)}
+.vitrine-note a{color:var(--gold);font-weight:700;border-bottom:1.5px solid var(--gold-soft)}
+
+/* ============================================================
+   PROCESSO (dark)
+   ============================================================ */
+.processo{background:var(--espresso);color:var(--cream);padding:clamp(5rem,10vw,8.5rem) 0;position:relative;overflow:hidden}
+.processo::before{
+  content:"";position:absolute;inset:0;opacity:.09;
+  background:url("https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?w=1600&q=60&fm=jpg") center/cover;
+}
+.processo .wrap{position:relative}
+.processo .lead{color:rgba(246,239,225,.72)}
+.processo h2{color:var(--cream)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:4rem;counter-reset:step}
+.step{position:relative;padding-top:2.2rem}
+.step::before{
+  content:"";position:absolute;top:8px;left:0;right:-2rem;height:1px;
+  background:linear-gradient(to right,var(--gold-soft),rgba(217,167,95,.15));
+}
+.step:last-child::before{right:0}
+.step::after{
+  content:"";position:absolute;top:2px;left:0;width:13px;height:13px;border-radius:50%;
+  background:var(--gold-soft);box-shadow:0 0 0 5px rgba(217,167,95,.18);
+}
+.step .hora{
+  font-family:var(--font-serif);font-style:italic;font-size:1.05rem;color:var(--gold-soft);
+}
+.step h3{font-size:1.5rem;margin:.5rem 0 .7rem;color:var(--cream)}
+.step p{font-size:.92rem;color:rgba(246,239,225,.66);line-height:1.65}
+
+/* ============================================================
+   BANNER (parallax quote)
+   ============================================================ */
+.banner{
+  position:relative;padding:clamp(7rem,15vw,11rem) 0;color:#fff;text-align:center;isolation:isolate;
+  background:url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=2000&q=80&fm=jpg") center/cover fixed no-repeat;
+}
+@media(max-width:900px){.banner{background-attachment:scroll}}
+.banner::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(rgba(24,15,4,.62),rgba(24,15,4,.62))}
+.banner blockquote{
+  font-family:var(--font-serif);font-weight:300;font-size:clamp(1.7rem,3.6vw,2.9rem);
+  line-height:1.35;max-width:26ch;margin:0 auto;
+}
+.banner cite{
+  display:block;margin-top:2rem;font-family:var(--font-sans);font-style:normal;
+  font-size:.78rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-soft);
+}
+
+/* ============================================================
+   DEPOIMENTOS
+   ============================================================ */
+.depo{padding:clamp(5rem,10vw,8.5rem) 0}
+.depo-head{text-align:center;max-width:620px;margin:0 auto 3.5rem}
+.depo-head .kicker{justify-content:center}
+.depo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.depo-card{
+  background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);
+  padding:2.2rem 2rem;position:relative;transition:transform .4s,box-shadow .4s;
+}
+.depo-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-sm)}
+.depo-card::before{
+  content:"“";position:absolute;top:.6rem;left:1.4rem;
+  font-family:var(--font-serif);font-size:5.5rem;line-height:1;color:var(--gold-soft);opacity:.55;
+}
+.stars{color:var(--gold);letter-spacing:.2em;font-size:.95rem;margin-bottom:1rem;position:relative}
+.depo-card p{font-size:.98rem;color:var(--ink-soft);position:relative}
+.depo-who{display:flex;align-items:center;gap:.9rem;margin-top:1.6rem}
+.avatar{
+  width:46px;height:46px;border-radius:50%;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-serif);font-size:1.15rem;color:#fff;background:var(--sage);
+}
+.avatar.a2{background:var(--gold)}
+.avatar.a3{background:#8d6b43}
+.depo-who b{font-size:.95rem;display:block;line-height:1.3}
+.depo-who span{font-size:.78rem;color:var(--ink-soft)}
+
+/* ============================================================
+   GALERIA
+   ============================================================ */
+.galeria{padding-bottom:clamp(5rem,10vw,8.5rem)}
+.galeria-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:2.8rem;flex-wrap:wrap}
+.galeria-head h2{margin-bottom:0}
+.insta{font-size:.86rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border-bottom:1.5px solid var(--gold-soft);padding-bottom:2px}
+.g-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:1.1rem}
+.g-item{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform 1s ease}
+.g-item:hover img{transform:scale(1.07)}
+.g-item::after{
+  content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(28,18,6,.5),transparent 55%);
+  opacity:0;transition:opacity .5s;
+}
+.g-item:hover::after{opacity:1}
+.g-item.tall{grid-row:span 2}
+.g-item.wide{grid-column:span 2}
+
+/* ============================================================
+   ENCOMENDAS CTA
+   ============================================================ */
+.encomendas{
+  background:var(--espresso);color:var(--cream);
+  padding:clamp(5rem,10vw,8rem) 0;position:relative;overflow:hidden;
+}
+.encomendas::before{
+  content:"";position:absolute;right:-140px;top:50%;transform:translateY(-50%);
+  width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle,rgba(185,129,47,.28),transparent 65%);
+}
+.enc-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(2.5rem,6vw,5rem);align-items:center;position:relative}
+.encomendas h2{color:var(--cream)}
+.encomendas .lead{color:rgba(246,239,225,.72)}
+.enc-list{margin-top:1.8rem;display:grid;gap:.85rem}
+.enc-list li{display:flex;gap:.85rem;align-items:baseline;font-size:.98rem;color:rgba(246,239,225,.85)}
+.enc-list li::before{content:"🌾";font-size:.85rem;flex:none}
+.enc-photo{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);transform:rotate(2deg)}
+.enc-photo img{width:100%;height:420px;object-fit:cover}
+.btn-whats{background:#25d366;color:#fff;box-shadow:0 14px 30px -12px rgba(37,211,102,.55);margin-top:2.4rem}
+.btn-whats:hover{background:#1eb455}
+.btn-whats svg{width:19px;height:19px}
+
+/* ============================================================
+   VISITA / MAPA
+   ============================================================ */
+.visita{padding:clamp(5rem,10vw,8.5rem) 0;background:var(--cream);border-top:1px solid var(--line)}
+.visita-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(2rem,5vw,4rem);align-items:stretch}
+.info-card{display:flex;flex-direction:column;justify-content:center}
+.info-rows{margin-top:2.2rem;display:grid;gap:1.6rem}
+.info-row{display:flex;gap:1.2rem;align-items:flex-start}
+.info-ico{
+  width:52px;height:52px;border-radius:16px;flex:none;
+  background:var(--paper);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;font-size:1.25rem;
+}
+.info-row b{display:block;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem}
+.info-row p{font-size:.98rem;color:var(--ink-soft)}
+.mapa{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);min-height:440px;position:relative}
+.mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:sepia(.22) saturate(.9)}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{background:var(--espresso);color:rgba(246,239,225,.65);padding:4.5rem 0 2rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:3rem;border-bottom:1px solid rgba(246,239,225,.12)}
+.foot-brand .brand-name{color:var(--cream)}
+.foot-brand p{font-size:.92rem;margin-top:1rem;max-width:34ch}
+footer h4{
+  font-family:var(--font-sans);font-size:.74rem;font-weight:800;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--gold-soft);margin-bottom:1.2rem;
+}
+.foot-grid ul{display:grid;gap:.65rem}
+.foot-grid a{font-size:.92rem;transition:color .3s}
+.foot-grid a:hover{color:var(--gold-soft)}
+.foot-base{display:flex;justify-content:space-between;gap:1.5rem;padding-top:1.8rem;font-size:.8rem;flex-wrap:wrap;color:rgba(246,239,225,.45)}
+.foot-base a{color:var(--gold-soft)}
+
+/* floating whatsapp */
+.zap-float{
+  position:fixed;right:22px;bottom:22px;z-index:900;
+  width:60px;height:60px;border-radius:50%;background:#25d366;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 14px 32px -8px rgba(37,211,102,.65);
+  transition:transform .3s;
+}
+.zap-float:hover{transform:scale(1.1)}
+.zap-float svg{width:30px;height:30px;fill:#fff}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:1020px){
+  .menu-grid{grid-template-columns:repeat(2,1fr)}
+  .g-grid{grid-template-columns:repeat(2,1fr)}
+  .depo-grid{grid-template-columns:1fr;max-width:560px;margin:0 auto}
+  .steps{grid-template-columns:repeat(2,1fr);gap:2.6rem 2rem}
+  .step::before{right:0}
+}
+@media(max-width:880px){
+  .nav-links,.nav .btn{display:none}
+  .burger{display:block}
+  .sobre-grid,.enc-grid,.visita-grid{grid-template-columns:1fr}
+  .collage{min-height:430px}
+  .stats{grid-template-columns:repeat(2,1fr);gap:2rem 1rem}
+  .enc-photo{transform:none}
+  .mapa{min-height:340px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  h1 br,h2 br{display:none}
+  .hero h1{font-size:clamp(2.1rem,10.5vw,2.6rem)}
+  h2{font-size:clamp(1.8rem,8.4vw,2.3rem)}
+  .menu-grid{grid-template-columns:1fr}
+  .g-grid{grid-auto-rows:170px}
+  .steps{grid-template-columns:1fr}
+  .step::before{display:none}
+  .hero-cta .btn{width:100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#inicio" class="brand" aria-label="Trigo Sereno — início">
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <path d="M24 44V16" stroke="#b9812f" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M24 18c-6-1.5-9-5.5-9-11 5.5 0 9.5 3 9 11Z" fill="#d9a75f"/>
+        <path d="M24 18c6-1.5 9-5.5 9-11-5.5 0-9.5 3-9 11Z" fill="#b9812f"/>
+        <path d="M24 27c-6-1.5-9-5.5-9-11 5.5 0 9.5 3 9 11Z" fill="#d9a75f"/>
+        <path d="M24 27c6-1.5 9-5.5 9-11-5.5 0-9.5 3-9 11Z" fill="#b9812f"/>
+        <path d="M24 36c-6-1.5-9-5.5-9-11 5.5 0 9.5 3 9 11Z" fill="#d9a75f"/>
+        <path d="M24 36c6-1.5 9-5.5 9-11-5.5 0-9.5 3-9 11Z" fill="#b9812f"/>
+      </svg>
+      <span>
+        <span class="brand-name">Trigo Sereno</span><br>
+        <span class="brand-sub">Padaria · Confeitaria · Cafeteria</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a href="#historia">Nossa História</a>
+      <a href="#vitrine">Vitrine</a>
+      <a href="#processo">O Processo</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#visita">Visite-nos</a>
+    </nav>
+    <a class="btn btn-gold" href="https://wa.me/5543984220109?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20encomenda%20%F0%9F%8C%BE" target="_blank" rel="noopener">Encomendar</a>
+    <button class="burger" aria-label="Abrir menu" onclick="document.body.classList.toggle('menu-open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" onclick="document.body.classList.remove('menu-open')">
+  <a href="#historia">Nossa História</a>
+  <a href="#vitrine">Vitrine</a>
+  <a href="#processo">O Processo</a>
+  <a href="#galeria">Galeria</a>
+  <a href="#visita">Visite-nos</a>
+  <a href="https://wa.me/5543984220109" target="_blank" rel="noopener" style="color:var(--gold-soft)">Encomendar ↗</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio">
+  <div class="wrap hero-inner">
+    <span class="kicker rv">Ivaiporã · Paraná — Vale do Ivaí</span>
+    <h1 class="rv d1">O pão que descansa <br>a noite inteira para <br><em>acordar perfeito.</em></h1>
+    <p class="rv d2">Fermentação natural, forno aceso de madrugada e o cheiro de pão quente atravessando a Avenida Paraná. A Trigo Sereno é padaria, confeitaria e cafeteria — feita à mão, sem pressa, todos os dias.</p>
+    <div class="hero-cta rv d3">
+      <a class="btn btn-gold" href="#vitrine">Conheça a vitrine</a>
+      <a class="btn btn-ghost" href="https://wa.me/5543984220109?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20encomenda%20%F0%9F%8C%BE" target="_blank" rel="noopener">Encomende pelo WhatsApp</a>
+    </div>
+    <div class="hero-badge rv d4">
+      <span class="dot"></span> Fornadas quentes às 6h · 10h · 16h
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <span>role</span>
+    <span class="line"></span>
+  </div>
+</section>
+
+<!-- ================= TICKER ================= -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Fermentação natural <i class="sep">✦</i> Pão quente toda hora <i class="sep">✦</i> Café especial <i class="sep">✦</i> Confeitaria artesanal <i class="sep">✦</i> Feito em Ivaiporã <i class="sep">✦</i> Encomendas para festas <i class="sep">✦</i></span>
+    <span>Fermentação natural <i class="sep">✦</i> Pão quente toda hora <i class="sep">✦</i> Café especial <i class="sep">✦</i> Confeitaria artesanal <i class="sep">✦</i> Feito em Ivaiporã <i class="sep">✦</i> Encomendas para festas <i class="sep">✦</i></span>
+  </div>
+</div>
+
+<!-- ================= SOBRE ================= -->
+<section class="sobre" id="historia">
+  <div class="wrap sobre-grid">
+    <div class="collage rv">
+      <div class="ph p1"><img src="https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?w=900&q=80&fm=jpg&fit=crop" alt="Mãos sovando massa de pão sobre a bancada enfarinhada" loading="lazy"></div>
+      <div class="ph p2"><img src="https://images.unsplash.com/photo-1568254183919-78a4f43a2877?w=760&q=80&fm=jpg&fit=crop" alt="Vitrine da padaria repleta de pães e folhados dourados" loading="lazy"></div>
+      <svg class="stamp" viewBox="0 0 128 128" aria-hidden="true">
+        <defs><path id="circ" d="M64,64 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
+        <circle cx="64" cy="64" r="63" fill="#1c1206"/>
+        <circle cx="64" cy="64" r="34" fill="none" stroke="#d9a75f" stroke-width="1"/>
+        <text fill="#d9a75f" font-size="12.5" font-family="Manrope, sans-serif" font-weight="700" letter-spacing="3.5">
+          <textPath href="#circ">PADARIA TRIGO SERENO · IVAIPORÃ PR ·</textPath>
+        </text>
+        <text x="64" y="70" text-anchor="middle" font-size="22" fill="#d9a75f">🌾</text>
+      </svg>
+    </div>
+    <div class="sobre-txt">
+      <span class="kicker rv">Nossa História</span>
+      <h2 class="rv d1">Sereno é o orvalho da madrugada — <em>a nossa hora favorita.</em></h2>
+      <div class="lead rv d2">
+        <p>Quando Ivaiporã ainda dorme e o sereno cobre o Vale do Ivaí, a nossa cozinha acende. É nesse silêncio que a massa termina seu longo descanso e o forno atinge o ponto certo — porque acreditamos que pão bom não tem atalho: tem tempo.</p>
+        <p>Nascemos com um propósito simples e teimoso: devolver à cidade o pão de verdade. Farinha boa, fermentação lenta, mãos que conhecem a massa e uma vitrine que muda com as estações. Da primeira fornada das 6h ao último café da tarde, tudo aqui é feito no ritmo sereno que o trigo merece.</p>
+      </div>
+    </div>
+  </div>
+  <div class="wrap stats">
+    <div class="stat rv"><b data-count="18">0</b><span>horas de fermentação lenta</span></div>
+    <div class="stat rv d1"><b data-count="40">0</b><span>variedades por dia</span></div>
+    <div class="stat rv d2"><b>4<sup>h30</sup></b><span>o forno acende</span></div>
+    <div class="stat rv d3"><b data-count="100">0</b><span>% artesanal, todos os dias</span></div>
+  </div>
+</section>
+
+<!-- ================= VITRINE ================= -->
+<section class="vitrine" id="vitrine">
+  <div class="wrap">
+    <div class="vitrine-head">
+      <span class="kicker center rv">A Vitrine</span>
+      <h2 class="rv d1">O que saiu do forno <em>hoje</em></h2>
+      <p class="lead rv d2" style="margin:0 auto">Uma seleção do que você encontra no balcão — pães de casca crocante, doces de vitrine e um café que honra a mesa.</p>
+    </div>
+
+    <div class="tabs rv" role="tablist" aria-label="Categorias da vitrine">
+      <button class="tab on" data-panel="paes" role="tab" aria-selected="true">🥖 Pães</button>
+      <button class="tab" data-panel="confeitaria" role="tab" aria-selected="false">🍰 Confeitaria</button>
+      <button class="tab" data-panel="cafeteria" role="tab" aria-selected="false">☕ Cafeteria</button>
+    </div>
+
+    <div class="panel on" id="paes" role="tabpanel">
+      <div class="menu-grid">
+        <article class="card rv">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=700&q=78&fm=jpg&fit=crop" alt="Pão italiano de fermentação natural com casca rústica" loading="lazy"><span class="price">R$ 24,90</span></div>
+          <div class="card-body"><h3>Italiano Sereno</h3><p>Nosso carro-chefe: 18h de fermentação natural, casca caramelizada e miolo úmido de alvéolos abertos.</p></div>
+        </article>
+        <article class="card rv d1">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=700&q=78&fm=jpg&fit=crop" alt="Croissants dourados polvilhados com farinha" loading="lazy"><span class="price">R$ 9,50</span></div>
+          <div class="card-body"><h3>Croissant Folhado</h3><p>32 camadas de massa laminada na manteiga. Crocante por fora, um nada por dentro — como manda a França.</p></div>
+        </article>
+        <article class="card rv d2">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=700&q=78&fm=jpg&fit=crop" alt="Cesta com variedade de pães artesanais da casa" loading="lazy"><span class="price">R$ 16,90/kg</span></div>
+          <div class="card-body"><h3>Francês da Casa</h3><p>Quentinho a cada fornada. Casca fina que estala e aquele miolo que abriga qualquer manteiga.</p></div>
+        </article>
+        <article class="card rv d3">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=700&q=78&fm=jpg&fit=crop" alt="Pão de fermentação natural fatiado sobre tábua de madeira" loading="lazy"><span class="price">R$ 22,90</span></div>
+          <div class="card-body"><h3>Integral de Grãos</h3><p>Trigo integral, linhaça, girassol e mel do Vale. Denso na medida, perfeito para o café da manhã.</p></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="panel" id="confeitaria" role="tabpanel">
+      <div class="menu-grid">
+        <article class="card rv">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=700&q=78&fm=jpg&fit=crop" alt="Bolo de chocolate com cobertura de ganache escorrendo" loading="lazy"><span class="price">R$ 12,90 fatia</span></div>
+          <div class="card-body"><h3>Bolo de Chocolate Intenso</h3><p>Massa fofa, ganache 60% e recheio de brigadeiro cremoso. O mais pedido das tardes.</p></div>
+        </article>
+        <article class="card rv d1">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=700&q=78&fm=jpg&fit=crop" alt="Torta de limão com merengue maçaricado" loading="lazy"><span class="price">R$ 11,50 fatia</span></div>
+          <div class="card-body"><h3>Torta de Limão do Sítio</h3><p>Base amanteigada, creme de limão tahiti e merengue maçaricado na hora.</p></div>
+        </article>
+        <article class="card rv d2">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=700&q=78&fm=jpg&fit=crop" alt="Macarons artesanais em tons pastel" loading="lazy"><span class="price">R$ 6,50 un.</span></div>
+          <div class="card-body"><h3>Macarons da Estação</h3><p>Sabores que mudam com a colheita: maracujá, pistache, doce de leite e café.</p></div>
+        </article>
+        <article class="card rv d3">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=700&q=78&fm=jpg&fit=crop" alt="Bolo festivo colorido com confeitos" loading="lazy"><span class="price">sob encomenda</span></div>
+          <div class="card-body"><h3>Bolos de Festa</h3><p>Aniversários, batizados e casamentos — projetados com você e assados na véspera.</p></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="panel" id="cafeteria" role="tabpanel">
+      <div class="menu-grid">
+        <article class="card rv">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=700&q=78&fm=jpg&fit=crop" alt="Xícaras de café com latte art sobre mesa de madeira" loading="lazy"><span class="price">R$ 8,90</span></div>
+          <div class="card-body"><h3>Latte Sereno</h3><p>Grãos do Norte Pioneiro do Paraná, extração cuidadosa e vaporização sedosa.</p></div>
+        </article>
+        <article class="card rv d1">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=700&q=78&fm=jpg&fit=crop" alt="Mesa de café da manhã completa com waffles e frutas" loading="lazy"><span class="price">R$ 39,90</span></div>
+          <div class="card-body"><h3>Café Colonial da Manhã</h3><p>Pães da fornada, frios, ovos, bolo do dia, frutas e café coado à vontade. Sáb. e dom.</p></div>
+        </article>
+        <article class="card rv d2">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?w=700&q=78&fm=jpg&fit=crop" alt="Torrada com ovo caipira e abacate" loading="lazy"><span class="price">R$ 18,90</span></div>
+          <div class="card-body"><h3>Torrada da Fazenda</h3><p>Fatia grossa do nosso italiano, abacate, ovo caipira e flor de sal.</p></div>
+        </article>
+        <article class="card rv d3">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1620921575116-fb8902865f81?w=700&q=78&fm=jpg&fit=crop" alt="Rabanada dourada com manteiga e calda de frutas vermelhas" loading="lazy"><span class="price">R$ 21,90</span></div>
+          <div class="card-body"><h3>Rabanada de Brioche</h3><p>Brioche da casa dourado na manteiga, calda de frutas vermelhas e açúcar com canela.</p></div>
+        </article>
+      </div>
+    </div>
+
+    <p class="vitrine-note rv">A vitrine muda todos os dias, conforme a fornada e a estação. <a href="https://wa.me/5543984220109?text=Ol%C3%A1!%20O%20que%20saiu%20do%20forno%20hoje%3F" target="_blank" rel="noopener">Pergunte o que saiu do forno hoje →</a></p>
+  </div>
+</section>
+
+<!-- ================= PROCESSO ================= -->
+<section class="processo" id="processo">
+  <div class="wrap">
+    <span class="kicker rv">O Processo</span>
+    <h2 class="rv d1">Uma noite inteira de trabalho <br>para <em>um minuto de prazer.</em></h2>
+    <p class="lead rv d2">Cada pão da Trigo Sereno atravessa a madrugada. Este é o relógio da nossa cozinha:</p>
+    <div class="steps">
+      <div class="step rv"><span class="hora">17h — véspera</span><h3>A massa nasce</h3><p>Farinha selecionada, água, sal e o nosso fermento natural, alimentado diariamente desde a primeira fornada.</p></div>
+      <div class="step rv d1"><span class="hora">22h — noite</span><h3>Descanso no sereno</h3><p>A massa dorme em fermentação lenta e fria. É aí que nascem o aroma, a leveza e a digestibilidade.</p></div>
+      <div class="step rv d2"><span class="hora">4h30 — madrugada</span><h3>O forno acende</h3><p>Enquanto a cidade dorme, modelamos cada pão à mão e o forno de lastro chega aos 250°C.</p></div>
+      <div class="step rv d3"><span class="hora">6h — amanhecer</span><h3>Pão quente no balcão</h3><p>A primeira fornada encontra o primeiro café coado. O dia começa oficialmente em Ivaiporã.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BANNER ================= -->
+<section class="banner">
+  <div class="wrap">
+    <blockquote class="rv">“Enquanto a cidade dorme, o trigo descansa sob o sereno. <em>Às seis da manhã, ele vira o seu café.</em>”</blockquote>
+    <cite class="rv d1">— Padaria Trigo Sereno</cite>
+  </div>
+</section>
+
+<!-- ================= DEPOIMENTOS ================= -->
+<section class="depo" id="depoimentos">
+  <div class="wrap">
+    <div class="depo-head">
+      <span class="kicker center rv">Quem provou, voltou</span>
+      <h2 class="rv d1">Ivaiporã já tem um <em>novo ritual.</em></h2>
+    </div>
+    <div class="depo-grid">
+      <div class="depo-card rv">
+        <div class="stars" aria-label="5 estrelas">★★★★★</div>
+        <p>O pão italiano de fermentação natural é outra coisa. A casca estala, o cheiro toma a casa. Virou tradição de sábado buscar a fornada das 6h ainda quente.</p>
+        <div class="depo-who"><div class="avatar">M</div><div><b>Marta Camargo</b><span>Moradora do Centro</span></div></div>
+      </div>
+      <div class="depo-card rv d1">
+        <div class="stars" aria-label="5 estrelas">★★★★★</div>
+        <p>Encomendei o bolo de festa da minha filha e foi o assunto do aniversário. Lindo, fresco e no ponto perfeito de doçura. Atendimento pelo WhatsApp rápido e atencioso.</p>
+        <div class="depo-who"><div class="avatar a2">R</div><div><b>Rodrigo Taques</b><span>Encomenda de festa</span></div></div>
+      </div>
+      <div class="depo-card rv d2">
+        <div class="stars" aria-label="5 estrelas">★★★★★</div>
+        <p>O café colonial de domingo virou programa da família inteira. Mesa farta, café excelente e aquele clima de padaria de interior que a gente sentia falta.</p>
+        <div class="depo-who"><div class="avatar a3">C</div><div><b>Cléia do Vale</b><span>Café colonial de domingo</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALERIA ================= -->
+<section class="galeria" id="galeria">
+  <div class="wrap">
+    <div class="galeria-head">
+      <div>
+        <span class="kicker rv">Galeria</span>
+        <h2 class="rv d1">Cenas de uma <em>padaria viva</em></h2>
+      </div>
+      <a class="insta rv" href="https://instagram.com" target="_blank" rel="noopener">@padariatrigosereno ↗</a>
+    </div>
+    <div class="g-grid">
+      <div class="g-item tall rv"><img src="https://images.unsplash.com/photo-1534620808146-d33bb39128b2?w=700&q=78&fm=jpg&fit=crop" alt="Fatias de pão de fermentação natural vistas de cima" loading="lazy"></div>
+      <div class="g-item rv d1"><img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=800&q=78&fm=jpg&fit=crop" alt="Balcão da padaria com pães rústicos e baguetes" loading="lazy"></div>
+      <div class="g-item rv d2"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=700&q=78&fm=jpg&fit=crop" alt="Amigos brindando com cafés na cafeteria" loading="lazy"></div>
+      <div class="g-item tall rv d3"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=700&q=78&fm=jpg&fit=crop" alt="Croissants recebendo chuva de farinha" loading="lazy"></div>
+      <div class="g-item wide rv d2"><img src="https://images.unsplash.com/photo-1568254183919-78a4f43a2877?w=1100&q=78&fm=jpg&fit=crop" alt="Vitrine iluminada repleta de folhados e doces" loading="lazy"></div>
+      <div class="g-item wide rv d1"><img src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=1100&q=78&fm=jpg&fit=crop" alt="Cliente saboreando o café da manhã na padaria" loading="lazy"></div>
+      <div class="g-item rv d2"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=700&q=78&fm=jpg&fit=crop" alt="Cafés com latte art entre plantas na cafeteria" loading="lazy"></div>
+      <div class="g-item rv d3"><img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=700&q=78&fm=jpg&fit=crop" alt="Mesa farta de café da manhã vista de cima" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ENCOMENDAS ================= -->
+<section class="encomendas" id="encomendas">
+  <div class="wrap enc-grid">
+    <div>
+      <span class="kicker rv">Encomendas</span>
+      <h2 class="rv d1">Leve a Trigo Sereno <br>para a <em>sua festa.</em></h2>
+      <p class="lead rv d2">Bolos personalizados, cestas de café da manhã, mesas de doces e pães especiais para restaurantes e eventos. Conte o que você imagina — a gente assa.</p>
+      <ul class="enc-list rv d3">
+        <li>Bolos de aniversário, batizado e casamento</li>
+        <li>Cestas de café da manhã com entrega em Ivaiporã</li>
+        <li>Coffee break para empresas e eventos</li>
+        <li>Pães de fermentação natural para restaurantes</li>
+      </ul>
+      <a class="btn btn-whats rv d4" href="https://wa.me/5543984220109?text=Ol%C3%A1!%20Quero%20fazer%20uma%20encomenda%20%F0%9F%8E%82" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.7 5.5.7 11.8c0 2 .5 3.9 1.5 5.6L.6 23.5l6.3-1.6c1.6.9 3.4 1.3 5.1 1.3 6.3 0 11.3-5 11.3-11.3S18.3.5 12 .5zm0 20.6c-1.6 0-3.2-.4-4.6-1.2l-.3-.2-3.7 1 1-3.6-.2-.4c-.9-1.5-1.4-3.2-1.4-4.9C2.8 6.6 6.9 2.5 12 2.5s9.2 4.1 9.2 9.2-4.1 9.4-9.2 9.4zm5-6.9c-.3-.1-1.6-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.6-.7 1.9-1.3.2-.6.2-1.2.2-1.3-.1-.2-.3-.3-.6-.4z"/></svg>
+        Chamar no WhatsApp
+      </a>
+    </div>
+    <div class="enc-photo rv d2">
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=900&q=80&fm=jpg&fit=crop" alt="Bolo de chocolate artesanal decorado para festas" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISITA ================= -->
+<section class="visita" id="visita">
+  <div class="wrap visita-grid">
+    <div class="info-card">
+      <span class="kicker rv">Visite-nos</span>
+      <h2 class="rv d1">Na avenida principal, <br>de portas <em>abertas.</em></h2>
+      <div class="info-rows">
+        <div class="info-row rv d1">
+          <div class="info-ico" aria-hidden="true">📍</div>
+          <div><b>Endereço</b><p>Av. Paraná, 1120 — Centro<br>Ivaiporã · PR, 86870-015</p></div>
+        </div>
+        <div class="info-row rv d2">
+          <div class="info-ico" aria-hidden="true">🕰️</div>
+          <div><b>Horários</b><p>Seg a Sáb — 6h às 19h30<br>Domingos e feriados — 6h às 12h</p></div>
+        </div>
+        <div class="info-row rv d3">
+          <div class="info-ico" aria-hidden="true">💬</div>
+          <div><b>Contato</b><p>WhatsApp (43) 98422-0109<br>contato@trigosereno.com.br</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="mapa rv d2">
+      <iframe title="Mapa — Padaria Trigo Sereno, Av. Paraná 1120, Ivaiporã PR" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed?origin=mfe&pb=!1m2!2m1!1sAv.+Paran%C3%A1,+1120,+Centro,+Ivaipor%C3%A3+-+PR,+86870-015"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="brand-name" style="font-family:var(--font-serif);font-size:1.6rem">🌾 Trigo Sereno</span>
+        <p>Padaria, confeitaria e cafeteria artesanal no coração do Vale do Ivaí. Feito no silêncio da madrugada, servido com o dia ainda começando.</p>
+      </div>
+      <div>
+        <h4>Navegue</h4>
+        <ul>
+          <li><a href="#historia">Nossa História</a></li>
+          <li><a href="#vitrine">Vitrine</a></li>
+          <li><a href="#processo">O Processo</a></li>
+          <li><a href="#galeria">Galeria</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Atendimento</h4>
+        <ul>
+          <li><a href="https://wa.me/5543984220109" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:contato@trigosereno.com.br">E-mail</a></li>
+          <li><a href="#encomendas">Encomendas</a></li>
+          <li><a href="#visita">Como chegar</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Horários</h4>
+        <ul>
+          <li>Seg–Sáb · 6h às 19h30</li>
+          <li>Dom · 6h às 12h</li>
+          <li style="color:var(--gold-soft)">Fornadas 6h · 10h · 16h</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Trigo Sereno Panificadora Ltda · CNPJ 66.891.428/0001-80</span>
+      <span><a href="https://www.trigosereno.com.br">trigosereno.com.br</a> · Av. Paraná, 1120 — Ivaiporã · PR</span>
+    </div>
+  </div>
+</footer>
+
+<!-- floating whatsapp -->
+<a class="zap-float" href="https://wa.me/5543984220109?text=Ol%C3%A1!%20Vim%20pelo%20site%20%F0%9F%8C%BE" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.7.5.7 5.5.7 11.8c0 2 .5 3.9 1.5 5.6L.6 23.5l6.3-1.6c1.6.9 3.4 1.3 5.1 1.3 6.3 0 11.3-5 11.3-11.3S18.3.5 12 .5zm0 20.6c-1.6 0-3.2-.4-4.6-1.2l-.3-.2-3.7 1 1-3.6-.2-.4c-.9-1.5-1.4-3.2-1.4-4.9C2.8 6.6 6.9 2.5 12 2.5s9.2 4.1 9.2 9.2-4.1 9.4-9.2 9.4zm5-6.9c-.3-.1-1.6-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.6-.7 1.9-1.3.2-.6.2-1.2.2-1.3-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+/* header scroll state */
+const header = document.getElementById('header');
+const onScroll = () => header.classList.toggle('solid', window.scrollY > 60);
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+/* reveal on scroll */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, {threshold:.14, rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+/* animated counters */
+const cio = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    cio.unobserve(e.target);
+    const el = e.target, target = +el.dataset.count, dur = 1400, t0 = performance.now();
+    const tick = now => {
+      const p = Math.min((now - t0) / dur, 1);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+}, {threshold:.6});
+document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+/* vitrine tabs */
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => { t.classList.remove('on'); t.setAttribute('aria-selected','false'); });
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('on'));
+    tab.classList.add('on');
+    tab.setAttribute('aria-selected','true');
+    const panel = document.getElementById(tab.dataset.panel);
+    panel.classList.add('on');
+    panel.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
+  });
+});
+</script>
+</body>
+</html>
